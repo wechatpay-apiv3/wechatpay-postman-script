@@ -11,19 +11,27 @@
 
 ## 配置脚本
 
-选中`wechatpay-apiv3`，右键`Edit`进入Collection的配置页面。在弹出的`Edit Collection`的浮层上部的多个分栏中，找到`Pre-request Script`一栏。点击进入。你会看到如下的代码
+选中`wechatpay-apiv3`，右键`Edit`进入Collection的配置页面。如图所示。
+
+![Collection](https://user-images.githubusercontent.com/1812516/62339118-84e03800-b50d-11e9-92f3-aae11d7cc7ce.png)
+
+在弹出的`Edit Collection`的浮层上部的多个分栏中，找到`Pre-request Scripts`一栏。
+
+![EDIT COLLECTION](https://user-images.githubusercontent.com/1812516/62339418-88c08a00-b50e-11e9-9276-970068fb5af7.png)
+
+其中红色方框中的代码，是需要配置三个参数。
 
 ```javascript
 const private_key = `-----BEGIN PRIVATE KEY-----
+{商户的私钥}
 -----END PRIVATE KEY-----`;
       
-const mchid = "190000xxxx";
-const serialNo = "yourserialno";
+const mchid = "{商户号}";
+const serialNo = "{商户证书的证书序列号}";
 
 // ....以下省略
 ```
-
-这就是你需要配置三个参数。
+参数的详细说明：
 
 + private_key，商户私钥，位于文件`apiclient_key.pem`中。请见，[商户API证书](https://wechatpay-api.gitbook.io/wechatpay-api-v3/ren-zheng/zheng-shu)和[什么是私钥？什么是证书？](https://wechatpay-api.gitbook.io/wechatpay-api-v3/chang-jian-wen-ti/zheng-shu-xiang-guan#shen-me-shi-si-yao-shen-me-shi-zheng-shu)。
 + mchid，商户号。
@@ -35,6 +43,8 @@ const serialNo = "yourserialno";
 
 + `Authorization`的`Type`选择`No Auth`。
 + 在请求的头部`Headers`中，新增一条，`KEY`设为`Authorization`，`VALUE`设为`{{auth}}`。
+
+![EDIT REQUEST](https://user-images.githubusercontent.com/1812516/62339751-b4903f80-b50f-11e9-8eb3-5538b26cdc8c.png)
 
 我们准备了`平台证书下载`和`发放指定批次的代金券`两个请求样例供开发者参考，分别对应`GET`和`POST`两种典型的操作。开发者也可以在两个请求样例的基础上进行修改，或者复制出新的请求。
 
@@ -49,6 +59,12 @@ const serialNo = "yourserialno";
 `Pre-request Script`脚本会在请求发送之前被执行。在脚本中，我们根据请求的方法、URL、请求参数、Body等信息，计算了微信支付API v3的`Authorization`信息，并设置到了环境变量`auth`当中。而在请求发送时，`Headers`中配置的`{{auth}}`将被替换成真实的签名值，实现了请求的签名。
 
 关于Postman脚本的信息，可以参考[Pre-request Script](https://learning.getpostman.com/docs/postman/scripts/pre_request_scripts/)。
+
+## 常见问题
+
+### 导入后找不到预设的脚本
+
+为了给不同的请求做统一配置，脚本是**Collection**级别的，不是单个**Request**级别的。请结合配图找到Collection的`EDIT`入口，里面的`Pre-request Script`才有预设的脚本。
 
 ## 联系我们
 
