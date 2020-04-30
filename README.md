@@ -66,6 +66,12 @@ const serialNo = "{商户证书的证书序列号}";
 
 为了给不同的请求做统一配置，脚本是**Collection**级别的，不是单个**Request**级别的。请结合配图找到Collection的`EDIT`入口，里面的`Pre-request Script`才有预设的脚本。
 
+### 发送请求时遇到错误提示“Error: Too few bytes to parse DER.”或者“Too few bytes to read ASN.1 value.”
+
+一般是**Pre-request Script**选项里private_key字段填写有误导致的，可以按以下步骤排查：
+1. private_key字段是否有填写正确的值，即商户的私钥。
+2. 是否有既在Collection层级，又在请求层级，都设置了Pre-request Script选项，如果是的话，只保留其中一个正确的设置即可。（注：Collection里的设置优先级更高）
+
 ## 联系我们
 
 如果你有任何疑问，欢迎访问我们的[开发者社区](https://developers.weixin.qq.com/community/pay)进行反馈。
