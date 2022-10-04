@@ -140,7 +140,7 @@
 					"    ",
 					"    _.forEach(tokens, t => {",
 					"       let variable = t.replace(/[{}]/g, '') ",
-					"       let value = environment[variable] || globals[variable]",
+					"       let value = pm.variables.get(variable)",
 					"       templateString = templateString.replace(new RegExp(t,'g'), value)",
 					"    });",
 					"    ",
