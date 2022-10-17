@@ -16,33 +16,33 @@
 
 使用向导 [![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/3391715-85f478d8-2596-420a-9f21-53376fc6ad0a?action=collection%2Ffork&collection-url=entityId%3D3391715-85f478d8-2596-420a-9f21-53376fc6ad0a%26entityType%3Dcollection%26workspaceId%3D5f619604-11ee-42a4-b148-22abec1f0611) 快速导入。点击左侧▶️按钮进入向导，如下图所示。
 
-<img width="440" alt="image" src="https://user-images.githubusercontent.com/1812516/196029034-fb5e9453-fbef-4267-94cc-8566dc008314.png">
+![fork collection step1](https://user-images.githubusercontent.com/1812516/196029034-fb5e9453-fbef-4267-94cc-8566dc008314.png)
 
 点击 `Fork Collection` 进入下一步，填入标签 `Fork Label` 并选择目的工作台 `Workspace`。一般情况下，导入个人工作台 My Workspace 即可。
 
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/1812516/196031088-2a0683a5-6a46-4704-9f8e-c88b548f4a2d.png">
+![fork collection step2](https://user-images.githubusercontent.com/1812516/196031088-2a0683a5-6a46-4704-9f8e-c88b548f4a2d.png)
 
 点击 `Fork Collection` 完成导入。在你指定的 workspace 中可以看到《微信支付 APIv3》了。
 
-<img width="440" alt="image" src="https://user-images.githubusercontent.com/1812516/196030065-1103c893-4104-4266-aa70-4b589cbfc6e0.png">
+![fork collection step3](https://user-images.githubusercontent.com/1812516/196030065-1103c893-4104-4266-aa70-4b589cbfc6e0.png)
 
 你也可以 [手工导入脚本](#手工导入脚本)。
 
 ### 步骤2：配置 Environment
 
-[Environment](https://learning.postman.com/docs/sending-requests/managing-environments/) 是一组变量 (Varibles) 的集合。脚本会读取环境中以下变量：
+[环境（Environment）](https://learning.postman.com/docs/sending-requests/managing-environments/) 是一组变量 (Varibles) 的集合。脚本会读取环境中以下变量：
 
-+ `merchantId`：必填，商户号。
-+ `merchantSerialNo`：必填，商户 API 证书序列号。
-+ `merchantPrivateKey`：必填，PEM 格式的商户 API 私钥。
+- `merchantId`：必填，商户号。
+- `merchantSerialNo`：必填，商户 API 证书序列号。
+- `merchantPrivateKey`：必填，PEM 格式的商户 API 私钥。
 
-你可以从《微信支付 APIv3》提供的 [商户参数模版](https://www.postman.com/wechatpay-dev/workspace/apiv3-public-workspace/environment/3391715-9f0f28eb-c323-4830-b9bc-3d1394562701) 中 fork environment 到自己的工作台。
+你可以从《微信支付 APIv3》提供的 [商户参数模版](https://www.postman.com/wechatpay-dev/workspace/apiv3-public-workspace/environment/3391715-9f0f28eb-c323-4830-b9bc-3d1394562701) 中 fork 环境到自己的工作台。
 
-<img width="440" alt="image" src="https://user-images.githubusercontent.com/1812516/196032966-abc65edd-3ff4-42ae-8b3b-b9d97587a301.png">
+![fork environment](https://user-images.githubusercontent.com/1812516/196032966-abc65edd-3ff4-42ae-8b3b-b9d97587a301.png)
 
-接下来，在你的工作台中，填入`商户号`、`商户 API 证书序列号`和`商户 API 私钥`。如下图所示。
+接下来，在你工作台的 Enviroments 中找到新建的环境，填入`商户号`、`商户 API 证书序列号`和`商户 API 私钥`。如下图所示。
 
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/1812516/196086544-249bcd6a-9973-4854-9310-f8dee61cf196.png">
+![enviroment varibles](https://user-images.githubusercontent.com/1812516/196086544-249bcd6a-9973-4854-9310-f8dee61cf196.png)
 
 你可以建立多组环境，对应不同的商户配置。
 
@@ -50,11 +50,11 @@
 
 现在回到工作台的请求构造界面吧，填入请求方法、URL、请求参数、Body 等参数。
 
-工作台预置了`获取微信支付平台证书`和`JSAPI下单`两个请求样例供开发者参考，分别对应 `GET` 和 `POST` 两种典型的操作。开发者可以两个请求样例出发，构造自己的请求。
+工作台预置了`获取微信支付平台证书列表`和`JSAPI下单`两个请求样例供开发者参考，分别对应 `GET` 和 `POST` 两种典型的操作。开发者可以两个请求样例出发，构造自己的请求。
 
-最后选择你之前配置的 Environment，点击地址栏右侧的`Send`按钮，发送请求吧。
+最后，选择你之前配置的 Environment，再点击地址栏右侧的`Send`按钮，发送请求吧。
 
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/1812516/196033692-a277267d-af1a-46df-a0e5-2244f97580a7.png">
+![send request](https://user-images.githubusercontent.com/1812516/196033692-a277267d-af1a-46df-a0e5-2244f97580a7.png)
 
 ## 实现原理
 
@@ -65,14 +65,14 @@
 1. 根据请求的方法、URL、参数、Body 等信息，构造签名串，并计算请求签名
 1. 设置请求头 `Authorization`
 
-关于Postman脚本的更多信息，请参考[Pre-request Script](https://learning.getpostman.com/docs/postman/scripts/pre_request_scripts/)。
+关于 Postman 脚本的更多信息，请参考[Scripting in Postman](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/)。
 
 ### 依赖库
 
 脚本直接使用了：
 
-+ [forge.min.js](forge.min.js)，[forge](https://github.com/digitalbazaar/forge) 的 PKI、RSA 和 ASN.1。
-+ [sm2.js](sm2.js)，腾讯国密库 TencentSM-javascript 的 SM2 签名。
+- [forge.min.js](forge.min.js)，[forge](https://github.com/digitalbazaar/forge) 的 PKI、RSA 和 ASN.1。
+- [sm2.js](sm2.js)，腾讯国密库 TencentSM-javascript 的 SM2 签名。
 
 为了避免每次请求都下载依赖库，两个库以源代码的方式存储在 Collection Variables。这大大减少了使用网页版 Postman 发送请求时的耗时。
 
@@ -80,17 +80,17 @@
 
 **商户 API 私钥**是非常敏感的信息。使用此代码时，应记住以下几点：
 
-+ 将配置了私钥的工作台（workspace）的可见性（Visibility）设置为私有 `Personal` 或者 `Private`，**不要**设置为公开 `Public`。
-+ 私钥的**变量类型**设置为 `secret`。变量值会以掩码的形式显示在屏幕上。
-+ 私钥的**变量值**设置在 `Current Value`。`Current Value` 不会被发送至 Postman 的服务器。这也意味着，为了安全，私钥在每次使用时设置。
-+ 如果使用来自其他人的 Postman 脚本，请检查依赖库、变量和脚本，确保没有被修改，避免被植入不安全代码。
+- 将配置了私钥的工作台（workspace）的可见性（Visibility）设置为私有 `Personal` 或者 `Private`，**不要**设置为公开 `Public`。
+- 私钥的**变量类型**设置为 `secret`。变量值会以掩码的形式显示在屏幕上。
+- 私钥的**变量值**设置在 `Current Value`。`Current Value` 不会被发送至 Postman 的服务器。这也意味着，为了安全，私钥在每次使用时设置。
+- 如果使用来自其他人的 Postman 脚本，请检查依赖库、变量和脚本，确保没有被修改，避免被植入不安全代码。
 
 ## 如何发起国密请求
 
 使用 [国密-商户参数模版](https://www.postman.com/wechatpay-dev/workspace/apiv3-public-workspace/environment/3391715-ba22edc3-d5f0-4c6e-9b44-b790b5a69218)，在环境变量中设置：
 
-+ `shangmi`：值为 `true` 时使用商密，默认值为空（即不使用国密）。
-+ `merchantPublicKey`：商户 API 国密公钥。如果你的国密私钥中包括了公钥，也可以不填。
+- `shangmi`：值为 `true` 时使用商密，默认值为空（即不使用国密）。
+- `merchantPublicKey`：商户 API 国密公钥。如果你的国密私钥中包括了公钥，也可以不填。
 
 这样，脚本会使用国密 SM2 计算签名，发送国密请求了。
 
@@ -98,8 +98,8 @@
 
 Fork Collection 导入需要注册 Postman 账户。如果你离线或者不希望注册，有以下两种方式本地导入。
 
-+ Postman 界面左上角的 `Import` 按钮
-+ 菜单 `File` > `Import` 发起导入
+- Postman 界面左上角的 `Import` 按钮
+- 菜单 `File` > `Import` 发起导入
 
 选择下载到本地的 [wechatpay-apiv3.postman_collection.json](wechatpay-apiv3.postman_collection.json)，点击确认后，导入便完成了。
 
