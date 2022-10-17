@@ -1,6 +1,6 @@
 /* global pm, require, console, forge, SM2Lib */
 const forge_code = pm.collectionVariables.get("forge_code");
-eval(forge_code);
+(new Function(forge_code))();
 
 const { asn1 } = forge;
 
@@ -294,7 +294,7 @@ if (enableShangMi == "true") {
   console.log("using ShangMi for signature");
 
   const sm2js_code = pm.collectionVariables.get("sm2js_code");
-  eval(sm2js_code);
+  (new Function(sm2_code))();
 
   const mchid = pm.environment.get("merchantId");
   const serialNumber = pm.environment.get("merchantSerialNo");
