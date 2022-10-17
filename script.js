@@ -1,3 +1,4 @@
+/* global pm, require, console, forge, SM2Lib */
 const forge_code = pm.collectionVariables.get("forge_code");
 eval(forge_code);
 
@@ -258,7 +259,7 @@ const sdk = require("postman-collection"),
   url = new sdk.Url(resolvedRequest.url),
   canonicalUrl = url.getPathWithQuery();
 
-const method = request.method;
+const method = pm.request.method;
 
 let body = "";
 if (method === "POST" || method === "PUT" || method === "PATCH") {
