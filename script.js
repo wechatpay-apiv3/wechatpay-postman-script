@@ -262,7 +262,7 @@ const sdk = require("postman-collection"),
 const method = pm.request.method;
 
 let body = "";
-if (method === "POST" || method === "PUT" || method === "PATCH") {
+if (pm.request.body.isEmpty() === false && (method === "POST" || method === "PUT" || method === "PATCH")) {
   // 使用变量替换后的body
   body = resolvedRequest.body.raw;
   if (canonicalUrl.endsWith("upload")) {
@@ -273,7 +273,6 @@ if (method === "POST" || method === "PUT" || method === "PATCH") {
       }
     }
   }
-  body = typeof body === 'undefined' ? '' : body;
 }
 
 // 计算签名源串
