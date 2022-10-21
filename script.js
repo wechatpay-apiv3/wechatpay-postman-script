@@ -273,6 +273,7 @@ if (method === "POST" || method === "PUT" || method === "PATCH") {
       }
     }
   }
+  body = typeof body === 'undefined' ? '' : body;
 }
 
 // 计算签名源串
@@ -287,6 +288,8 @@ const message =
   "\n" +
   body +
   "\n";
+
+console.log(`sign message=[${message}]`);
 
 let auth;
 const enableShangMi = pm.environment.get("shangmi");
