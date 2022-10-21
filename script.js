@@ -297,7 +297,7 @@ if (enableShangMi == "true") {
   console.log("using ShangMi for signature");
 
   const sm2js_code = pm.collectionVariables.get("sm2js_code");
-  (new Function(sm2_code))();
+  (new Function(sm2js_code))();
 
   const mchid = pm.environment.get("merchantId");
   const serialNumber = pm.environment.get("merchantSerialNo");
