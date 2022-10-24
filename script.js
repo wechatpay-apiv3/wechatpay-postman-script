@@ -262,7 +262,7 @@ const sdk = require("postman-collection"),
 const method = pm.request.method;
 
 let body = "";
-if (method === "POST" || method === "PUT" || method === "PATCH") {
+if (!pm.request.body.isEmpty() && (method === "POST" || method === "PUT" || method === "PATCH")) {
   // 使用变量替换后的body
   body = resolvedRequest.body.raw;
   if (canonicalUrl.endsWith("upload")) {
@@ -288,13 +288,15 @@ const message =
   body +
   "\n";
 
+console.log(`sign message=[${message}]`);
+
 let auth;
 const enableShangMi = pm.environment.get("shangmi");
 if (enableShangMi == "true") {
   console.log("using ShangMi for signature");
 
   const sm2js_code = pm.collectionVariables.get("sm2js_code");
-  (new Function(sm2_code))();
+  (new Function(sm2js_code))();
 
   const mchid = pm.environment.get("merchantId");
   const serialNumber = pm.environment.get("merchantSerialNo");
