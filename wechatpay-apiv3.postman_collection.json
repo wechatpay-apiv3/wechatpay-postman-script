@@ -8257,7 +8257,7 @@
 								{
 									"name": "200_OK",
 									"originalRequest": {
-										"method": "GET",
+										"method": "POST",
 										"header": [],
 										"url": {
 											"raw": "{{server_url}}/v3/profitsharing/receivers/add",
@@ -8320,7 +8320,7 @@
 								{
 									"name": "200_OK",
 									"originalRequest": {
-										"method": "GET",
+										"method": "POST",
 										"header": [],
 										"url": {
 											"raw": "{{server_url}}/v3/profitsharing/receivers/delete",
