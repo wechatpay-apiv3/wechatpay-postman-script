@@ -39,9 +39,9 @@
 
 接下来，在你工作台的 Enviroments 中找到新建的环境，点击 `Add a new varialbe` 添加新的变量：
 
-- `merchantId`：必填，商户号。
-- `merchantSerialNo`：必填，商户 API 证书序列号。
-- `merchantPrivateKey`：必填，PEM 格式的商户 API 私钥。
+- `mchid`：必填，商户号。
+- `merchant_serial_no`：必填，商户 API 证书序列号。
+- `apiclient_key.pem`：必填，PEM 格式的商户 API 私钥。
 
 > **Warning**
 > 为了安全，请仔细阅读[安全注意事项](#安全注意事项)。
@@ -55,13 +55,13 @@
 > **Note** 
 > 我们建议，使用桌面版 Postman app 发送请求，速度更快，体验更好！
 
-现在回到工作台的请求构造界面吧，填入请求方法、URL、请求参数、Body 等参数。
+现在回到工作台，进入《微信支付 APIv3》集合，选择你要发送的请求。
 
-工作台预置了`获取微信支付平台证书列表`和`JSAPI下单`两个请求样例供开发者参考，分别对应 `GET` 和 `POST` 两种典型的操作。开发者可以两个请求样例出发，构造自己的请求。
+然后，填入请求参数，按照注释修改 Body 中的参数。
 
 最后，选择你之前配置的 Environment，再点击地址栏右侧的`Send`按钮，发送请求吧。
 
-![send request](https://user-images.githubusercontent.com/1812516/196033692-a277267d-af1a-46df-a0e5-2244f97580a7.png)
+![send request](https://user-images.githubusercontent.com/1812516/200260900-8e706607-fd68-44dd-95d0-bb4125746e79.png)
 
 ## 实现原理
 
@@ -79,11 +79,14 @@
 
 |  变量名   | 是否必填  |  描述  | 备注 |
 | - | :----: | - | - |
-| merchantId  | 是 | 商户号  | |
-| merchantSerialNo | 是 | 商户 API 证书的证书序列号 |  |
-| merchantPrivateKey | 是 | PEM 格式的商户 API 私钥 |  |
+| mchid  | 是 | 商户号  | |
+| merchant_serial_no | 是 | 商户 API 证书的证书序列号 |  |
+| apiclient.pem | 是 | PEM 格式的商户 API 私钥 |  |
+| openid | 否 | 用户的 OpenID，测试请求中的 {{openid}} |  |
+| appid | 否 | 公众账号或者小程序的 AppID |  |
 | shangmi | 否 | 值为 `true` 时使用商密签名 | 默认值为空，即使用 RSA 签名 |
-| merchantPublicKey | 商密签名时必填 | PEM 格式的商户 API 公钥 | 如果私钥 PEM 中包含公钥，该变量可不填 |
+| pubkey.pem | 国密签名时必填 | PEM 格式的商户 API 公钥 | 如果私钥 PEM 中包含公钥，该变量可不填 |
+| server_url | 否 | 服务器地址 | 默认为 https://api.mch.weixin.qq.com |
 
 ### 依赖库
 
@@ -111,7 +114,10 @@
 使用 [国密-商户参数模版](https://www.postman.com/wechatpay-dev/workspace/apiv3-public-workspace/environment/3391715-ba22edc3-d5f0-4c6e-9b44-b790b5a69218)，在环境变量中设置：
 
 - `shangmi`：值为 `true`。
-- `merchantPublicKey`：商户 API 国密公钥。
+- `mchid`：必填，商户号。
+- `merchant_serial_no`：必填，商户 API 证书序列号。
+- `apiclient_key.pem`：必填，PEM 格式的商户 API 私钥。
+- `pubkey.pem`：必填，PEM 格式的商户 API 国密公钥。
 
 这样，脚本会使用国密 SM2 计算签名，发送国密请求了。
 
@@ -125,6 +131,18 @@ Fork Collection 导入需要注册 Postman 账户。如果你离线或者不希�
 选择下载到本地的 [wechatpay-apiv3.postman_collection.json](wechatpay-apiv3.postman_collection.json)，点击确认后，导入便完成了。
 
 你会发现在工作台的 Collections 里新增了名为 《微信支付 APIv3》 的一组请求。
+
+## 同步上游的变更
+
+我们会逐步添加新接口和更新已有接口，但是你 fork 到自己工作台的集合分支并不会自动同步上游的变更。建议关注 `watch` 我们的 Public Workspace，这样上游变更时你会收到来自 postman 的通知。
+
+![notification](https://user-images.githubusercontent.com/1812516/200259622-eaac0ec7-e55c-48a2-a710-e720ce677aef.png)
+
+这时，你可使用 `pull changes` 拉取上游的变更。
+
+![pull changes](https://user-images.githubusercontent.com/1812516/200260015-462757c2-4f7c-44db-9663-b901f0b36228.png)
+
+postman 的 `pull changes` 可能会需要等待一定时间完成。如果遇到问题，重新 fork 也是一个好办法。
 
 ## 常见问题
 
