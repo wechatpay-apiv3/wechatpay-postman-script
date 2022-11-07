@@ -48,7 +48,7 @@
 
 一组常见配置如下图所示。
 
-![enviroment varibles](https://user-images.githubusercontent.com/1812516/196086544-249bcd6a-9973-4854-9310-f8dee61cf196.png)
+![enviroment varibles](https://user-images.githubusercontent.com/1812516/200261861-8073d9b4-bf34-47e1-9a36-5c931cdb935e.png)
 
 ### 步骤3：发送请求
 
