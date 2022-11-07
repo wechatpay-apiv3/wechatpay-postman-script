@@ -4408,7 +4408,7 @@
 						{
 							"name": "条件查询批次列表",
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"url": {
 									"raw": "{{server_url}}/v3/marketing/favor/stocks?offset=0&limit=10&stock_creator_mchid=9856888&create_start_time=2015-05-20T13%3A29%3A35%2B08%3A00&create_end_time=2015-05-20T19%3A29%3A35%2B08%3A00&status=running",
@@ -4459,7 +4459,7 @@
 								{
 									"name": "200_OK",
 									"originalRequest": {
-										"method": "POST",
+										"method": "GET",
 										"header": [],
 										"url": {
 											"raw": "{{server_url}}/v3/marketing/favor/stocks?offset=0&limit=10&stock_creator_mchid=9856888&create_start_time=2015-05-20T13%3A29%3A35%2B08%3A00&create_end_time=2015-05-20T19%3A29%3A35%2B08%3A00&status=running",
@@ -6794,7 +6794,7 @@
 						{
 							"name": "终止活动",
 							"request": {
-								"method": "GET",
+								"method": "POST",
 								"header": [],
 								"url": {
 									"raw": "{{server_url}}/v3/marketing/paygiftactivity/activities/{{此处替换为要终止的支付有礼活动id}}/terminate",
@@ -6815,7 +6815,7 @@
 								{
 									"name": "200_OK",
 									"originalRequest": {
-										"method": "GET",
+										"method": "POST",
 										"header": [],
 										"url": {
 											"raw": "{{server_url}}/v3/marketing/paygiftactivity/activities/{{此处替换为要终止的支付有礼活动id}}/terminate",
@@ -7809,7 +7809,14 @@
 							"name": "请求分账",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Wechatpay-Serial",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
 								"body": {
 									"mode": "raw",
 									"raw": "{\n  \"appid\": \"{{appid}}\",///商户号绑定的APPID\n  \"transaction_id\": \"4208450740201411110007820472\",///要分账的微信支付订单号\n  \"out_order_no\": \"P2022111111111100011\",///商户系统内部的分账单号，在商户系统内部唯一，同一分账单号多次请求等同一次。只能是数字、大小写字母_-|*@\n  \"receivers\": [\n    {\n      \"type\": \"MERCHANT_ID\",///分账接收方类型\t1、MERCHANT_ID：商户号 2、PERSONAL_OPENID：个人微信openid，需要和appid一一对应\n      \"account\": \"{{此处替换为分账接收方商户号}}\",///分账接收方账号：1、类型是MERCHANT_ID时，是商户号（mch_id或者sub_mch_id） 2、类型是PERSONAL_OPENID时，是个人微信用户的openid\n      \"amount\": 888,///要分出给接收方的分账金额，单位为“分”，只能为整数，不能超过原订单实际支付金额及最大分账比例金额\n      \"description\": \"分给商户A\"///分账的原因描述，分账账单中需要体现\n    }\n  ],\n  \"unfreeze_unsplit\": true ///1、如果为true，该笔订单剩余未分账的金额会解冻回分账方商户； 2、如果为false，该笔订单剩余未分账的金额不会解冻回分账方商户，可以对该笔订单再次进行分账。\n}",
