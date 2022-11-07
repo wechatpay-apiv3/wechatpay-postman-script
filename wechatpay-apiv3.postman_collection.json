@@ -8221,11 +8221,8 @@
 						},
 						{
 							"name": "添加分账接收方",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
 							"request": {
-								"method": "GET",
+								"method": "POST",
 								"header": [
 									{
 										"key": "Wechatpay-Serial",
