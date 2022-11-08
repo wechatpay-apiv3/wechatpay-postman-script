@@ -81,7 +81,7 @@
 | - | :----: | - | - |
 | mchid  | 是 | 商户号  | |
 | merchant_serial_no | 是 | 商户 API 证书的证书序列号 |  |
-| apiclient.pem | 是 | PEM 格式的商户 API 私钥 |  |
+| apiclient_key.pem | 是 | PEM 格式的商户 API 私钥 |  |
 | openid | 否 | 用户的 OpenID，测试请求中的 {{openid}} |  |
 | appid | 否 | 公众账号或者小程序的 AppID |  |
 | shangmi | 否 | 值为 `true` 时使用商密签名 | 默认值为空，即使用 RSA 签名 |
