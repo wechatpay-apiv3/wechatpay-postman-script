@@ -306,11 +306,11 @@ if (enableShangMi == "true") {
   const sm2js_code = pm.collectionVariables.get("sm2js_code");
   (new Function(sm2js_code))();
 
-  const mchid = pm.environment.get("merchantId");
-  const serialNumber = pm.environment.get("merchantSerialNo");
+  const mchid = pm.environment.get("mchid");
+  const serialNumber = pm.environment.get("merchant_serial_no");
   // 二进制的私钥和公钥
-  const privateKeyPem = pm.environment.get("merchantPrivateKey");
-  const publicKeyPem = pm.environment.get("merchantPublicKey");
+  const privateKeyPem = pm.environment.get("apiclient_key.pem");
+  const publicKeyPem = pm.environment.get("pubkey.pem");
 
   const privateKeyInfo = privateKeyFromPem(privateKeyPem);
   const publicKey =
@@ -330,10 +330,10 @@ if (enableShangMi == "true") {
 } else {
   console.log("using RSA for signature");
 
-  const mchid = pm.environment.get("merchantId");
-  const serialNo = pm.environment.get("merchantSerialNo");
+  const mchid = pm.environment.get("mchid");
+  const serialNo = pm.environment.get("merchant_serial_no");
   // pem私钥字符串
-  const privateKeyStr = pm.environment.get("merchantPrivateKey");
+  const privateKeyStr = pm.environment.get("apiclient_key.pem");
   // 从pem中加载私钥
   const privateKey = forge.pki.privateKeyFromPem(privateKeyStr);
 
