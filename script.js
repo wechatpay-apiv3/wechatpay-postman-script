@@ -275,7 +275,7 @@ if (!pm.request.body.isEmpty() && (method === "POST" || method === "PUT" || meth
   body = resolvedRequest.body.raw;
   if (canonicalUrl.endsWith("upload")) {
     const result = JSON.parse(JSON.stringify(resolvedRequest.body.formdata));
-    for (const [key, value] of result) {
+    for (const { key, value } of result) {
       if (key === "meta") {
         body = value;
       }
