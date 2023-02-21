@@ -248,6 +248,14 @@ function publicKeyFromPem(pem) {
 const nonceStr = pm.variables.replaceIn("{{$guid}}"),
   timeStamp = pm.variables.replaceIn("{{$timestamp}}");
 
+// Strip JSON Comments
+if (pm.request.body.mode === 'raw') {
+    const rawData = pm.request.body.toString();
+    const strippedData = rawData.replace(/\\"|"(?:\\"|[^"])*"|(\/\/.*|\/\*[\s\S]*?\*\/)/g, (m, g) => g ? "" : m);
+
+    pm.request.body.raw = strippedData;
+}
+
 // 变量替换，把请求中所有的Variables赋值
 const sdk = require("postman-collection"),
   newRequest = new sdk.Request(pm.request.toJSON()),
