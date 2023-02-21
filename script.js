@@ -273,8 +273,8 @@ let body = "";
 if (!pm.request.body.isEmpty() && (method === "POST" || method === "PUT" || method === "PATCH")) {
   // 使用变量替换后的body
   body = resolvedRequest.body.raw;
-  if (canonicalUrl.endsWith("upload")) {
-    const result = JSON.parse(JSON.stringify(resolvedRequest.body.formdata));
+  if (resolvedRequest.body.mode === 'formdata') {
+    const result = resolvedRequest.body.formdata;
     for (const { key, value } of result) {
       if (key === "meta") {
         body = value;
