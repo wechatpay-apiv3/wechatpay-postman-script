@@ -2,7 +2,7 @@
 
 微信支付 APIv3 的 [Postman](https://www.postman.com) 请求前置脚本（[Pre-Request Script](https://learning.postman.com/docs/writing-scripts/pre-request-scripts/)）。
 
-为了帮助商户开发者快速上手，我们将脚本部署到 Postman 云工作台 [APIv3 Public Workspace](https://www.postman.com/wechatpay-dev/workspace/apiv3-public-workspace/overview)。你不用手动导入脚本，只需要将集合[《微信支付 APIv3》](https://www.postman.com/wechatpay-dev/workspace/apiv3-public-workspace/collection/3391715-85f478d8-2596-420a-9f21-53376fc6ad0a) fork 到自己的工作台，就可以在 Postman 上轻松地构造并发送微信支付 APIv3 请求了。
+为了帮助商户开发者快速上手，我们将脚本部署到 Postman 云工作台 [WeChat Pay APIv3 Public Workspace](https://www.postman.com/wechatpay-dev/workspace/wechat-pay-apiv3-public-workspace/overview)。你不用手动导入脚本，只需要将集合[《微信支付 APIv3》](https://www.postman.com/wechatpay-dev/workspace/apiv3-public-workspace/collection/3391715-85f478d8-2596-420a-9f21-53376fc6ad0a) fork 到自己的工作台，就可以在 Postman 上轻松地构造并发送微信支付 APIv3 请求了。
 
 ## 前置条件
 
