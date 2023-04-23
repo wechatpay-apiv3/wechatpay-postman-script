@@ -132,12 +132,12 @@ Fork Collection 导入需要注册 Postman 账户。如果你不希望注册，�
 
 ![export-json](https://user-images.githubusercontent.com/1812516/233817722-e706c51a-444e-4267-8c24-fcd3f6d398ef.png)
 
-得到 `wechatpay-apiv3.postman_collection.json` 文件。然后，有两种方式本地导入 JSON 文件：
+下载并保存 `wechatpay-apiv3.postman_collection.json` 文件至本地。然后，有两种方式本地导入 JSON 文件：
 
 - Postman 界面左上角的 `Import` 按钮
 - 菜单 `File` > `Import` 发起导入
 
-选择下载到本地的 [wechatpay-apiv3.postman_collection.json](wechatpay-apiv3.postman_collection.json)，点击确认后，导入便完成了。
+选择本地的 `wechatpay-apiv3.postman_collection.json`，点击确认后，导入便完成了。
 
 你会发现在工作台的 Collections 里新增了名为 《WeChatPay APIv3》 的一组请求。[配置 Environment](#步骤2配置-environment) 后即可 [发送请求](#步骤3发送请求)。
 
