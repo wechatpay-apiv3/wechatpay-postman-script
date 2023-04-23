@@ -52,7 +52,7 @@
 
 ### 步骤3：发送请求
 
-> **Note** 
+> **Note**
 > 我们建议，使用桌面版 Postman app 发送请求，速度更快，体验更好！
 
 现在回到工作台，进入《微信支付 APIv3》集合，选择你要发送的请求。
@@ -86,7 +86,7 @@
 | appid | 否 | 公众账号或者小程序的 AppID |  |
 | shangmi | 否 | 值为 `true` 时使用商密签名 | 默认值为空，即使用 RSA 签名 |
 | pubkey.pem | 国密签名时必填 | PEM 格式的商户 API 公钥 | 如果私钥 PEM 中包含公钥，该变量可不填 |
-| server_url | 否 | 服务器地址 | 默认为 https://api.mch.weixin.qq.com |
+| server_url | 否 | 服务器地址 | 默认设置为 `https://api.mch.weixin.qq.com` |
 
 ### 依赖库
 
@@ -123,14 +123,23 @@
 
 ## 本地导入脚本
 
-Fork Collection 导入需要注册 Postman 账户。如果你离线或者不希望注册，有以下两种方式本地导入。
+> **Note**
+> 不推荐本地导入脚本，不但麻烦而且容易出错，还不能同步上游的变更
+
+Fork Collection 导入需要注册 Postman 账户。如果你不希望注册，可以本地导入脚本。
+
+首先，打开 [WeChatPay APIv3](https://www.postman.com/wechatpay-dev/workspace/wechat-pay-public-workspace/collection/3391715-85f478d8-2596-420a-9f21-53376fc6ad0a) 集合，展开选项后点击 Export：
+
+![export-json](https://user-images.githubusercontent.com/1812516/233817722-e706c51a-444e-4267-8c24-fcd3f6d398ef.png)
+
+得到 `wechatpay-apiv3.postman_collection.json` 文件。然后，有两种方式本地导入 JSON 文件：
 
 - Postman 界面左上角的 `Import` 按钮
 - 菜单 `File` > `Import` 发起导入
 
 选择下载到本地的 [wechatpay-apiv3.postman_collection.json](wechatpay-apiv3.postman_collection.json)，点击确认后，导入便完成了。
 
-你会发现在工作台的 Collections 里新增了名为 《微信支付 APIv3》 的一组请求。
+你会发现在工作台的 Collections 里新增了名为 《WeChatPay APIv3》 的一组请求。[配置 Environment](#步骤2配置-environment) 后即可 [发送请求](#步骤3发送请求)。
 
 ## 同步上游的变更
 
