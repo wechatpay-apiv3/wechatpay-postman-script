@@ -159,9 +159,9 @@ postman 的 `pull changes` 可能会需要等待一定时间完成。如果遇�
 
 通常是环境 Environments 里配置的变量 `merchantPrivateKey` 填写有误导致的。脚本接收的私钥，以 `-----BEGIN PRIVATEKEY-----` 开始，以 `-----END PRIVATE KEY-----` 结束的一串字符串。
 
-### 发起请求的时候遇到错误提示“There was an error in evaluating the Pre-request Script:Error: Invalid PEM formatted message.”
+### 发起请求时遇到错误提示：“There was an error in evaluating the Pre-request Script: Error: Invalid PEM formatted message.”
 
-是因为在填写`Environments`变量的时候，把值填在了`Initial value`列里引起的脚本取值异常为空，应该填在`Current value`当中，这样即可解决该问题。
+这个问题通常是由于在设置`Environments`变量时，将值填写在了`Initial Value`列，而非`Current Value`列，导致脚本在执行时无法正确读取变量值。只需将变量值填写在`Current Value`中，即可解决该问题。
 
 ### 为什么我发送请求很慢？
 
